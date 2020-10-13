@@ -1,6 +1,6 @@
 describe ("Testing Pizza OrderForm",function(){
     beforeEach(()=>{
-        cy.visit("http://localhost:3002/");
+        cy.visit("http://localhost:3000/");
     });
     it("Go to Order form and place order",function(){
         cy.get('[data-cy="order"]').click();
@@ -34,7 +34,7 @@ describe ("Testing Pizza OrderForm",function(){
         cy.get('[data-cy="congrats"]').should("exist");
        
     })      
-    it("Go to Order form case for error when count > 50",function(){
+    it("Test case for error when count > 100 & add button disabled ",function(){
         cy.get('[data-cy="order"]').click();
         cy.get('[data-cy="name"]').type("Marsman").should("have.value", "Marsman");
         cy.get('[data-cy="email"]').type("mars@gmail.com").should("have.value", "mars@gmail.com");
@@ -46,7 +46,8 @@ describe ("Testing Pizza OrderForm",function(){
         cy.get("#olive").check().should("be.checked")
         cy.get("#onion").check().should("be.checked")
         cy.get("#pepper").check().should("be.checked")
-        cy.get("#count").type("60").should("have.value","60");
+        // cy.get("#count").type("100").should("have.value","100");
+        cy.get("#count").type("120")
         cy.screenshot("image before submit");
         cy.get('[data-cy="add"]').click();
         cy.get('[data-cy="confirm"]').click();

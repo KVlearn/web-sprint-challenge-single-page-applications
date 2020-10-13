@@ -39,7 +39,7 @@ Its used for getting access to the match data without actually rendering a <Rout
 1. How would you explain form validation to someone who has never programmed before?
 Testing framework of Arrange - We create the test setup of useraction sequence, test environments etc.
 , Act - where we perform the simulation of real time user action on the application
- and 
+ and
 Assert - where we verify the simulated output matches with the expected output. 
 
 1. In 1-2 sentences, define end to end testing.

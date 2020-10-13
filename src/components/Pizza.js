@@ -105,7 +105,12 @@ function Pizza({setPost}){
     //special instruction validation
     special: yup.string(),
     //count validation
-    count:yup.number(),
+    count:yup.number()
+    .positive()
+    .integer()
+    .min(1, "Min is 1")
+    .max(100,"Sorry please make another order for count more than 100")
+    .required("Looks like you missed the count..."),
     
   });
 
@@ -222,6 +227,7 @@ function Pizza({setPost}){
            <option value="Medium">Medium</option>
            <option value="Small">Small</option> 
            </select>   
+           {errors.size.length > 0 ? <p className="error">{errors.size}</p> : null}
           </label>
           <div className="sauce">
           <h5> Choice of Sauce</h5> 
@@ -345,6 +351,7 @@ function Pizza({setPost}){
                 onChange={handleChange}
                 placeholder="Anything else you would like to add ?"
                  />
+                  {errors.subs.length > 0 ? <p className="error">{errors.subs}</p> : null}
             </label>
             </div>
              </div>
@@ -358,6 +365,7 @@ function Pizza({setPost}){
                 value={formState.count}
                 onChange={handleChange}
                 />
+                 {errors.count.length > 0 ? <p className="error">{errors.count}</p> : null}
             </label>
              </div>
              <div className="submit">
